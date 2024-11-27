@@ -1,4 +1,5 @@
 # Código revisado para melhor apresentação e comparativos entre UFs
+pip install plotly
 
 import pandas as pd
 import streamlit as st
