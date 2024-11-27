@@ -48,6 +48,8 @@ def calcular_fluxo_ajustado(gravimetria_data, resumo_fluxo_data):
                             "Vidros": row[residuo] * gravimetricos.get("Vidros", 0),
                             "Metais": row[residuo] * gravimetricos.get("Metais", 0),
                             "Orgânicos": row[residuo] * gravimetricos.get("Orgânicos", 0),
+                            "Redução Peso Seco com Dom+Pub": row[residuo] * gravimetricos.get("Redução de peso seco com Dom+Pub", 0),
+                            "Redução Peso Líquido com Dom+Pub": row[residuo] * gravimetricos.get("Redução de peso Líquido com Dom+Pub", 0),
                         })
                     elif residuo == "Entulho":
                         for material, percentual in percentuais_entulho.items():
@@ -55,6 +57,9 @@ def calcular_fluxo_ajustado(gravimetria_data, resumo_fluxo_data):
                     elif residuo == "Saúde":
                         ajuste_residuos["Valor energético (MJ/ton)"] = row[residuo] * gravimetricos.get(
                             "Valor energético p/Incineração", 0
+                        )
+                        ajuste_residuos["Valor energético p/Coprocessamento"] = row[residuo] * gravimetricos.get(
+                            "Valor energético p/Coprocessamento", 0
                         )
                     elif residuo == "Podas":
                         ajuste_residuos["Redução Peso Seco"] = row[residuo] * gravimetricos.get(
